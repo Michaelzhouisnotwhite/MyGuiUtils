@@ -1,0 +1,11 @@
+{
+    "cmake.configureSettings": {
+        "MyGuiUtils_Example": true
+    },
+    "yaml.schemas": {
+        "https://json.schemastore.org/clangd.json": [
+            "file:///c%3A/Users/michael/AppData/Local/clangd/config.yaml",
+            "file:///d%3A/Repository/Test-Repo/MyGuiUtils/.clangd"
+        ]
+    }
+}

@@ -1,0 +1,17 @@
+# ninja log v5
+39	108	0	D:/Repository/Test-Repo/MyGuiUtils/cmake-vscode-build-GCC/CMakeFiles/cmake.verify_globs	4f42d58011aa0fd2
+518	675	0	clean	f0174e1efcf85a66
+120	5835	7152003401574763	src/CMakeFiles/_src.dir/platforms/win/SendKeyBoard.cpp.obj	d3205a22f42df73a
+131	4482	7152003387979658	example/CMakeFiles/example_test_window_id.dir/test_window_id.cpp.obj	78c01ea598cff8ef
+114	17079	7151969218842433	_deps/fmt-build/CMakeFiles/fmt.dir/src/os.cc.obj	d06908af45700029
+103	20914	7151969257010568	_deps/fmt-build/CMakeFiles/fmt.dir/src/format.cc.obj	417af89e66835f71
+123	26934	7151969317381996	_deps/toy-build/src/generic/CMakeFiles/generic.dir/cmake_pch.hxx.gch	906444292cd6a7b5
+20914	23301	7151969281213105	_deps/fmt-build/libfmtd.a	209044c698ff5cc6
+26951	28404	7151969332723911	_deps/toy-build/src/generic/CMakeFiles/generic.dir/toy.cpp.obj	26ff23c6d047634b
+26934	28405	7151969332743956	_deps/toy-build/src/generic/CMakeFiles/generic.dir/thread_pool.cpp.obj	3694c60e1766f5c
+26943	28837	7151969337075954	_deps/toy-build/src/generic/CMakeFiles/generic.dir/timer.cpp.obj	28eb51d8dd38a1e4
+28837	29095	7151969339656415	_deps/toy-build/src/generic/libgeneric.a	ae4a9cc3d985d7b3
+5836	6060	7152003403814970	src/lib_src.a	7bad3217e257ec86
+6060	6371	7152003406816972	example/example_test_window_id.exe	a190c41a3a5de043
+142	3137	7151984202773225	example/CMakeFiles/example_input_text2window.dir/input_text2window.cpp.obj	ab37a449d5865c62
+3138	3415	7151984205489226	example/example_input_text2window.exe	3740d3dab761f994
