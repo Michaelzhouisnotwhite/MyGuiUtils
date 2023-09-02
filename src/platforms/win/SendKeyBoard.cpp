@@ -45,12 +45,12 @@ static char ToUpperCase(const char& letter) {
 }  // namespace
 
 namespace GuiUtils {
-void SetForegroundWindow(uint64_t wnd_id, StatusCode& err) {
+void SetForegroundWindow(WINID wnd_id, StatusCode& err) {
     auto wnd_ptr = (HWND)wnd_id;
     auto res = ::SetForegroundWindow(wnd_ptr);
     err = res ? StatusCode::PASS : StatusCode::SetForegroundWindowFailed;
 }
-uint64_t GetForegroundWinId(StatusCode& err) {
+WINID GetForegroundWinId(StatusCode& err) {
     auto res = ::GetForegroundWindow();
     if (!res) {
         err = StatusCode::GetForegroundWinIdFailed;

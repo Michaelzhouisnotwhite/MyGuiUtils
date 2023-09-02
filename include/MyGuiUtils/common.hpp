@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <string>
 namespace GuiUtils {
+using WINID = uint64_t ;
 enum class KeyAction { UP, DOWN };
 enum class StatusCode { PASS, PasteError, InputError, SetForegroundWindowFailed, GetForegroundWinIdFailed };
 static StatusCode status_code_ = StatusCode::PASS;
@@ -13,8 +14,8 @@ void PasteToForeGroundWindow(StatusCode& error);
 // #ifdef WIN32
 // #include <windows.h>
 namespace GuiUtils {
-void SetForegroundWindow(uint64_t wnd_id, StatusCode&);
-uint64_t GetForegroundWinId(StatusCode&);
+void SetForegroundWindow(WINID wnd_id, StatusCode&);
+WINID GetForegroundWinId(StatusCode&);
 }  // namespace GuiUtils
 // #endif
 #endif /* INCLUDE_MYGUIUTILS_COMMON */
