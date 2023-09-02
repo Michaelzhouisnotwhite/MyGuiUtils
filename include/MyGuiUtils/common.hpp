@@ -1,5 +1,6 @@
 #ifndef INCLUDE_MYGUIUTILS_COMMON
 #define INCLUDE_MYGUIUTILS_COMMON
+#include <cstdint>
 #include <string>
 namespace GuiUtils {
 enum class KeyAction { UP, DOWN };
@@ -9,11 +10,11 @@ void InputToForeGroundWindow(const std::string&);
 void PasteToForeGroundWindow(StatusCode& error);
 
 }  // namespace GuiUtils
-#ifdef WIN32
-#include <windows.h>
+// #ifdef WIN32
+// #include <windows.h>
 namespace GuiUtils {
-void SetForegroundWindow(HWND wnd_id, StatusCode&);
-HWND GetForegroundWinId(StatusCode&);
+void SetForegroundWindow(uint64_t wnd_id, StatusCode&);
+uint64_t GetForegroundWinId(StatusCode&);
 }  // namespace GuiUtils
-#endif
+// #endif
 #endif /* INCLUDE_MYGUIUTILS_COMMON */
