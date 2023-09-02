@@ -15,8 +15,8 @@ enum class StatusCode {
     GetForegroundWinIdFailed
 };
 static StatusCode status_code_ = StatusCode::PASS;
-void InputToForeGroundWindow(const std::string&);
-void PasteToForeGroundWindow(StatusCode& error);
+void Input2ForeGroundWindow(const std::string&);
+void Paste2ForeGroundWindow(StatusCode& error);
 
 void SetForegroundWindow(WINID wnd_id, StatusCode&);
 WINID GetForegroundWinId(StatusCode&);

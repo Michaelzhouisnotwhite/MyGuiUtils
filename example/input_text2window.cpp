@@ -5,7 +5,7 @@
 int main(int args, char* argv[])
 {
     SetForegroundWindow((HWND)0x0000000000020ce8);
-    GuiUtils::InputToForeGroundWindow("input abcasdf");
+    GuiUtils::Input2ForeGroundWindow("input abcasdf");
     return 0;
 }   
 #endif

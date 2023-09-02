@@ -102,7 +102,7 @@ WINID GetForegroundWinId(StatusCode& err) {
     err = StatusCode::PASS;
     return (uint64_t)res;
 }
-void PasteToForeGroundWindow(StatusCode& error) {
+void Paste2ForeGroundWindow(StatusCode& error) {
     error = StatusCode::PASS;
     bool state = SendInputs({CreateInput(VK_LSHIFT), CreateInput(VK_INSERT),
                              CreateInput(VK_LSHIFT, KEYEVENTF_KEYUP),
@@ -111,7 +111,7 @@ void PasteToForeGroundWindow(StatusCode& error) {
         error = StatusCode::PasteError;
     }
 }
-void InputToForeGroundWindow(const std::string& content) {
+void Input2ForeGroundWindow(const std::string& content) {
     std::vector<INPUT> inputs;
     toy::enumerate(content, [&inputs](const auto& i, const auto& letter) {
         if (!IsAscii(letter)) {
