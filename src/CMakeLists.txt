@@ -4,7 +4,7 @@ project(_src)
 if(WIN32)
     set(src_win_prefix platforms/win)
     set(srcs
-        "${src_win_prefix}/SendKeyBoard.cpp"
+        "${src_win_prefix}/common.cpp"
     )
     
     add_library(${PROJECT_NAME} STATIC ${srcs})

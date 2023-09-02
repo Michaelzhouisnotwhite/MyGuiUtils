@@ -1,8 +1,8 @@
+#include "MyGuiUtils/common.hpp"
 #include <toy/include.h>
 #include <windows.h>
 #include <string>
 #include <vector>
-#include "MyGuiUtils/common.hpp"
 
 namespace {
 
@@ -26,25 +26,69 @@ static bool SendInputs(std::vector<INPUT> input) {
 
     return true;
 }
-static bool IsCapLetter(const char& letter) {
-    return letter <= 'Z' && letter >= 'A';
-}
-static bool IsLowLetter(const char& letter) {
-    return letter <= 'z' && letter >= 'a';
-}
-template <typename CharType>
-static bool IsAscii(const CharType& letter) {
-    return ((int8_t)letter <= 127 && letter >= 0);
-}
-static char ToUpperCase(const char& letter) {
-    if (IsLowLetter(letter)) {
-        return (char)(letter - 'a' + 'A');
-    }
-    return letter;
-}
+
 }  // namespace
 
 namespace GuiUtils {
+using std::wstring;
+/**
+ * @brief Get the Last Visible Active Pop Up Of Window object
+ * https://github.com/hluk/CopyQ/blob/master/src/platform/win/winplatform.cpp#L146
+ * @param window 
+ * @return WINID 
+ */
+WINID GetLastVisibleActivePopUpOfWindow(WINID window) {
+    HWND currentWindow = (HWND)window;
+
+    for (int i = 0; i < 50; ++i) {
+        HWND lastPopUp = GetLastActivePopup(currentWindow);
+
+        if (IsWindowVisible(lastPopUp))
+            return (WINID)lastPopUp;
+
+        if (lastPopUp == currentWindow)
+            return 0;
+
+        currentWindow = lastPopUp;
+    }
+
+    return 0;
+}
+/**
+ * @brief Get the Window Class Name object 
+ https://github.com/hluk/CopyQ/blob/master/src/platform/win/winplatform.cpp#L146
+ * 
+ * @param window 
+ * @return std::wstring 
+ */
+std::wstring GetWindowClassName(WINID window) {
+    std::array<WCHAR, 32> buf{};
+    GetClassNameW((HWND)window, buf.data(), 32);
+    return buf.data();
+}
+/**
+ * @brief https://github.com/hluk/CopyQ/blob/master/src/platform/win/winplatform.cpp#L146
+ * 
+ * @param window 
+ * @return true 
+ * @return false 
+ */
+bool IsAltTabWindow(WINID window) {
+    if (!window || window == (WINID)GetShellWindow())
+        return true;
+
+    HWND root = GetAncestor((HWND)window, GA_ROOTOWNER);
+
+    if (GetLastVisibleActivePopUpOfWindow((WINID)root) != window)
+        return true;
+
+    const auto cls = GetWindowClassName(window);
+    return cls.empty() || cls == L"Shell_TrayWnd" || cls == L"Shell_SecondaryTrayWnd" ||
+           cls == L"Shell_CharmWindow" || cls == L"DV2ControlHost" ||
+           cls == L"MsgrIMEWindowClass" || cls == L"SysShadow" || cls == L"Button" ||
+           cls.rfind(L"WMP9MediaBarFlyout") != cls.npos;
+}
+
 void SetForegroundWindow(WINID wnd_id, StatusCode& err) {
     auto wnd_ptr = (HWND)wnd_id;
     auto res = ::SetForegroundWindow(wnd_ptr);
