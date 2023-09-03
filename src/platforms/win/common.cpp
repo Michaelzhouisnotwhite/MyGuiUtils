@@ -130,4 +130,33 @@ void Input2ForeGroundWindow(const std::string& content) {
     });
     SendInputs(inputs);
 }
+
+bool IsKeyPressed(int key)
+{
+    return GetKeyState(key) & 0x8000;
+}
+
+bool IsModifierPressed()
+{
+    return IsKeyPressed(VK_LCONTROL)
+        || IsKeyPressed(VK_RCONTROL)
+        || IsKeyPressed(VK_LSHIFT)
+        || IsKeyPressed(VK_RSHIFT)
+        || IsKeyPressed(VK_LMENU)
+        || IsKeyPressed(VK_RMENU)
+        || IsKeyPressed(VK_MENU);
+}
+// bool waitForModifiersReleased(int timeout=500)
+// {
+//     const int maxWaitForModsReleaseMs = timeout;
+//     if (maxWaitForModsReleaseMs >= 0) {
+//         SleepTimer t(maxWaitForModsReleaseMs);
+//         while (t.sleep()) {
+//             if (!isModifierPressed())
+//                 return true;
+//         }
+//     }
+
+//     return !isModifierPressed();
+// }
 }  // namespace GuiUtils

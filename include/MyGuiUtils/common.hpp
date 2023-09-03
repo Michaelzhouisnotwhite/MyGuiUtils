@@ -50,6 +50,8 @@ inline char ToUpperCase(const char& letter) {
     }
     return letter;
 }
+bool IsKeyPressed(int key);
+bool IsModifierPressed();
 }  // namespace GuiUtils
 // #endif
 #endif /* INCLUDE_MYGUIUTILS_COMMON */
